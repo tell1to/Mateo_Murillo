@@ -1,0 +1,30 @@
+name: Python Test Workflow
+
+on:
+  push:
+    branches:
+      - moreno  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout del código
+        uses: actions/checkout@v3
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || echo "No hay requirements.txt, se continúa..."
+
+      - name: ✅ Ejecutar pruebas
+        run: |
+            pip install pytest
+            pytest
+
