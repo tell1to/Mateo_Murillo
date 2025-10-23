@@ -5,6 +5,6 @@ COPY . /app
 
 RUN pip install --no-cache-dir pytest
 
-EXPOSE 3222
+EXPOSE 3000
 
 CMD ["python", "main.py"]
